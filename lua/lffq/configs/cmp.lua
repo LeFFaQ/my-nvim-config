@@ -1,6 +1,8 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
+require('luasnip.loaders.from_vscode').lazy_load()
+
 return {
   snippet = {
     expand = function (args)
@@ -18,7 +20,7 @@ return {
     ["<Tab>"] = cmp.mapping(function (fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumbpable() then
+      elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
         fallback()

@@ -4,7 +4,6 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local term_opts = {silent = true}
 
---local telescope = require("telescope.builtin")
 vim.g.mapleader = ' '
 
 M.lspconfig = {
@@ -63,6 +62,33 @@ map('t', "<C-x>",
   vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true)
 , opts)
 
+
+-- Based
+map('', '<up>', ':echoe "Use hjkl, noob"<CR>', {noremap = true, silent = false})
+map('', '<down>', ':echoe "Use hjkl, noob"<CR>', {noremap = true, silent = false})
+map('', '<left>', ':echoe "Use hjkl, noob"<CR>', {noremap = true, silent = false})
+map('', '<right>', ':echoe "Use hjkl, noob"<CR>', {noremap = true, silent = false})
+
+-- Moving in INSERT mode
+map('i', "<C-h>", "<left>", { noremap = true })
+map('i', "<C-j>", "<down>", { noremap = true })
+map('i', "<C-k>", "<up>", { noremap = true })
+map('i', "<C-l>", "<right>", { noremap = true })
+
+-- Moving between windows
+map('n', "<C-h>", "<C-w>h", { noremap = true })
+map('n', "<C-j>", "<C-w>j", { noremap = true })
+map('n', "<C-k>", "<C-w>k", { noremap = true })
+map('n', "<C-l>", "<C-w>l", { noremap = true })
+
+-- Resize windows
+map('n', '<C-left>', ":vertical resize -2<CR>", {silent = true})
+map('n', '<C-down>', ":resize +2<CR>", {silent = true})
+map('n', '<C-up>', ":resize -2<CR>", {silent = true})
+map('n', '<C-right>', ":resize +2<CR>", {silent = true})
+
+-- Save file
+map('n', '<C-s>', ":w<CR>")
 
 return M
 

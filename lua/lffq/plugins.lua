@@ -88,7 +88,11 @@ return {
   {
     "NvChad/nvterm",
     config = function ()
-      require("nvterm").setup()
+      require("nvterm").setup {
+          behavior = {
+              auto_insert = false
+          }
+      }
     end
   },
   {
@@ -114,7 +118,9 @@ return {
     lazy = false,
     priority = 1000,
     config = function ()
-      require("tairiki").setup{}
+      require("tairiki").setup {
+          transparent = false
+      }
       require("tairiki").load()
     end
   }
