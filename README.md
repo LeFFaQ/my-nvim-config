@@ -1,0 +1,1 @@
+# My owm nvim config
