@@ -87,6 +87,8 @@ map('n', '<C-down>', ":resize +2<CR>", {silent = true})
 map('n', '<C-up>', ":resize -2<CR>", {silent = true})
 map('n', '<C-right>', ":resize +2<CR>", {silent = true})
 
+-- Fast normal mode
+map('i', 'jk', '<ESC>', opts)
 -- Save file
 map('n', '<C-s>', ":w<CR>")
 
