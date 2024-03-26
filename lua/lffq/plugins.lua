@@ -67,19 +67,28 @@ return {
       "nvim-lua/plenary.nvim"
     },
     cmd = "Telescope",
-    --keys = {
-    --  {"gr", function ()
-    --    require("telescope.builtin").lsp_references()
-    --  end},
+    keys = {
+      {"<leader>ff", function ()
+        require("telescope.builtin").find_files()
+      end, desc = "[F]ind [F]iles"},
+      {"<leader>fb", function ()
+          require("telescope.builtin").buffers()
+      end, desc = "[F]ind [B]uffers"},
+    {"<leader>ds", function ()
+    require("telescope.builtin").lsp_document_symbols()
+          end,"[D]ocument [S]ymbols"},
+          {"<leader>ws", function ()
+            require("telescope.builtin").lsp_dynamic_workspace_symbols()
+      end, "[W]orkspace [S]ymbols"},
+
+  },
     --  {"<leader>ds", function ()
     --    require("telescope.builtin").lsp_document_symbols()
     --  end},
     --  {"<leader>ws", function ()
     --    require("telescope.builtin").lsp_dynamic_workspace_symbols()
-    --  end},
-    --},
-    --opts = function ()
-    --  return require("lffq.configs.telescope") 
+    --end}, }, opts = function ()
+    --  eturn require("lffq.configs.telescope") 
     --end,
     config = function (_, opts)
       require("telescope").setup()
@@ -102,6 +111,25 @@ return {
     end
   },
   {
+      'nvim-lualine/lualine.nvim',
+      lazy = false,
+      dependencies = {'nvim-web-devicons'},
+      config = function ()
+
+          local wpm = require("wpm") 
+
+          require("lualine").setup {
+              sections = {
+                  lualine_a = { 'mode' },
+                  lualine_c = {'filename'},
+                  lualine_x = { wpm.wpm },
+                  lualine_y = {'encoding', 'fileformat', 'filetype'},
+                  lualine_z = {'progress'},
+              }
+          }
+    end
+  },
+  {
     "NvChad/nvim-colorizer.lua",
     event = "UIEnter",
     config = function ()
@@ -112,6 +140,13 @@ return {
       end, 0)
     end,
   },
+  {
+    "jcdickinson/wpm.nvim",
+    config = function()
+        require("wpm").setup({
+        })
+    end
+    },
   -- themes 
   {
     "deparr/tairiki.nvim",

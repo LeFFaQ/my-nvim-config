@@ -26,12 +26,20 @@ end
 
 local servers = {
   clangd = {},
+  csharp_ls = {},
+  gopls = {},
+  html = {}, 
+  dartls = {},
 }
 
 local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup({
   ensure_installed = vim.tbl_keys(servers)
 })
+
+servers["tsserver"] = {
+    cmd = {"typescript-language-server", "--stdio"}
+}
 
 mason_lspconfig.setup_handlers({
   function (server)

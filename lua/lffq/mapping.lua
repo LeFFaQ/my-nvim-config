@@ -31,7 +31,14 @@ M.lspconfig = {
   {"<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder"},
   {"<leader>wl", function ()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, "[W]orkspaces [L]ist"}
+  end, "[W]orkspaces [L]ist"},
+  {"<leader>ff", function() 
+      require("telescope.builtin").find_files()
+   end, "[F]ind [f]iles"},
+   {"<leader>fb", function() 
+      require("telescope.builtin").buffers()
+   end, "[F]ind [b]uffers"},
+   
 }
 
 -- terminal mapping
@@ -62,12 +69,6 @@ map('t', "<C-x>",
   vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true)
 , opts)
 
-
--- Based
-map('', '<up>', ':echoe "Use hjkl, noob"<CR>', {noremap = true, silent = false})
-map('', '<down>', ':echoe "Use hjkl, noob"<CR>', {noremap = true, silent = false})
-map('', '<left>', ':echoe "Use hjkl, noob"<CR>', {noremap = true, silent = false})
-map('', '<right>', ':echoe "Use hjkl, noob"<CR>', {noremap = true, silent = false})
 
 -- Moving in INSERT mode
 map('i', "<C-h>", "<left>", { noremap = true })
